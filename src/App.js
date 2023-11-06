@@ -11,6 +11,8 @@ import AddProduct from "./components/AddProduct";
 import UpdateProduct from "./components/UpdateComponent";
 import { useEffect, useState } from "react";
 import Products2 from "./components/Products2";
+import { StoreProvider, useProducts } from "./StoreContext";
+// import CartDrawer from "./components/Cart/CartDrawer";
 
 function App() {
 
@@ -18,7 +20,7 @@ function App() {
   const [allProducts, setAllProducts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
 
-
+  // const { data } = useProducts();
   // useEffect(() => {
 
   //   if (loggedIn) {
@@ -65,6 +67,7 @@ function App() {
 
   return (
     <div className="App">
+      <StoreProvider>
       <BrowserRouter>
         <Nav onFilterChange={onFilterChange} categories={categories} />
         {/* <Nav /> */}
@@ -81,11 +84,13 @@ function App() {
             {/* <Route path="/update/:id" element={<UpdateProduct />} /> */}
             <Route path="/logout" element={<h1>Logout</h1>} />
             <Route path="/profile" element={<h1>Profile</h1>} />
+            {/* <CartDrawer></CartDrawer> */}
           </Route>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
+      </StoreProvider>
       <Footer />
     </div>
   );

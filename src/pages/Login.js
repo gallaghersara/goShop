@@ -15,28 +15,6 @@ const Login = () => {
 //     }
 //   }, []);
 
-//   const handleLogin = async () => {
-//     // console.warn(name, email, password);
-//     let result = await fetch("http://localhost:8000/login", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ email, password }),
-//     });
-//     result = await result.json();
-//     console.warn(result);
-//     if (result) {
-//       localStorage.setItem("user", JSON.stringify(result));
-//     //   localStorage.setItem("token", JSON.stringify(result.auth));
-
-//       navigate("/");
-//     } else {
-//       console.log("Please enter correct details");
-//     }
-//   };
-
-
 const handleLogin = async (e) => {
     e.preventDefault();
     console.log(name);
