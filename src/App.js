@@ -69,7 +69,7 @@ function App() {
     <div className="App">
       <StoreProvider>
       <BrowserRouter>
-        <Nav onFilterChange={onFilterChange} categories={categories} />
+        <Nav onFilterChange={onFilterChange} categories={categories} products={products}  />
         {/* <Nav /> */}
         <Routes>
           <Route element={ <PrivateComponent />}>

@@ -3,13 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import FilterBy from "./FIlterBy";
 import CartDrawer from "../Cart/CartDrawer";
 import ProductInCart from "../Cart/ProductInCart";
-// import CartModal from "../Cart/CartModal";
+import { useStore } from "../../StoreContext";
 
-const Nav = ({ categories, onFilterChange }) => {
+const Nav = ({products, categories, onFilterChange, cartValues }) => {
   const navigate = useNavigate();
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-
+  const { cart, setCart } = useStore();
   const auth = localStorage.getItem("user");
 
   const logout = async () => {
@@ -24,10 +24,6 @@ const Nav = ({ categories, onFilterChange }) => {
     navigate("/signup");
   };
 
-  const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
-  };
-
   const styleObj = {
     height: "25px",
     // fontSize: 14,
@@ -35,13 +31,17 @@ const Nav = ({ categories, onFilterChange }) => {
     // textAlign: "center",
     // paddingTop: "10px",
 }
+
   return (
-    
+
     <div>
-       <CartDrawer cartOpen={cartOpen} setCartOpen={setCartOpen}>
-        {/* <button onClick={handleClose}>CLOSE DRAWER</button> */}
-        <p>111</p>
-        <ProductInCart />
+      {/* <button onClick={() => setCartOpen(!cartOpen)}>Open Cart</button> */}
+
+      
+      <CartDrawer cartOpen={cartOpen} setCartOpen={setCartOpen}>
+        {Array.from(cart.keys()).map((productId) => (
+          <ProductInCart key={productId} productID={productId} />
+        ))}
       </CartDrawer>
       <img
         alt="logo"

@@ -4,7 +4,7 @@ import { useCart } from "../../StoreContext";
 
 const Cart = ({ title, imageUrl, price, productID }) => {
   const [cart, setCart] = useState(new Map());
-const {toCart} =useCart;
+// const {toCart} =useCart;
   const addProductToCart = (newAmount) => {
     let currentProduct = cart.get(productID);
     if (currentProduct) {

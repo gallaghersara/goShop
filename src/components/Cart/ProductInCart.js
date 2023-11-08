@@ -1,22 +1,27 @@
 import React from "react";
-import { useCart } from "../../StoreContext";
+import { useStore } from "../../StoreContext";
+// import { useCart, useProducts, useStore } from "../StoreContext";
 
-const ProductInCart = ({item}) => {
-  const { cart, setCart } = useCart();
+const ProductInCart = ({   productID,cartValues }) => {
+//   const { cart, setCart } = useCart();
+  const { cart, setCart } = useStore();
   console.log("cart", cart);
-
-  //   const listItems = cart.map((productId, product) => <h1>{product}</h1>);
-
+  const itemInCart = cart.get(productID);
+  const product = cart.get(productID);
+  if (!product) {
+      return null; // If the product isn't found in the cart, don't render anything
+    }
+    const { title, price, amount } = product;
+      if (itemInCart && itemInCart.amount > 0) {
   return (
-    <div>
-      {cart.forEach((item) => (
-        <div key={item.pruductId}>
-          <h3>{item.productName}</h3>
-          {/* <p>Price: {value.price}</p>
-          <p>Quantity: {value.amount}</p> */}
-        </div>
-      ))}
+<div>
+      <h3>{title}</h3>
+      <p>Price: {price}</p>
+      <p>Quantity: {amount}</p>
+      {/* <p>Quantity: {itemInCart ? itemInCart.amount : 0}</p> */}
     </div>
   );
-};
+  }
+//   return null; 
+}
 export default ProductInCart;

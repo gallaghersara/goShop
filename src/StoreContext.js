@@ -3,20 +3,20 @@ import { useContext, createContext, useState, useEffect } from "react";
 import { dataURL } from "./config";
 
 const StoreContext = createContext(null);
-const ProductsContext = createContext(null);
-const CartContext = createContext(null);
+// const ProductsContext = createContext(null);
+// const CartContext = createContext(null);
 
 export function useStore() {
   return useContext(StoreContext);
 }
 
-export function useProducts() {
-  return useContext(ProductsContext);
-}
+// export function useProducts() {
+//   return useContext(ProductsContext);
+// }
 
-export function useCart() {
-  return useContext(CartContext);
-}
+// export function useCart() {
+//   return useContext(CartContext);
+// }
 
 export const StoreProvider = ({ children }) => {
   const [data, setData] = useState([]);
@@ -41,9 +41,9 @@ export const StoreProvider = ({ children }) => {
     }
   };
 
-  const shoppingCartValues = {
+  // const shoppingCartValues = {
 
-  }
+  // }
   const storeValues = {
         setCategory,
         category,
@@ -56,12 +56,16 @@ export const StoreProvider = ({ children }) => {
     const productsValues = { data };
     const cartValues = { cart, setCart };
   return (
-    <StoreContext.Provider value={storeValues}>
-      <ProductsContext.Provider value={productsValues}>
-        <CartContext.Provider value={cartValues}>
-          {children}
-        </CartContext.Provider>
-      </ProductsContext.Provider>
-     </StoreContext.Provider>
+    // <StoreContext.Provider value={storeValues}>
+    //   <ProductsContext.Provider value={productsValues}>
+    //     <CartContext.Provider value={cartValues}>
+    //       {children}
+    //     </CartContext.Provider>
+    //   </ProductsContext.Provider>
+    //  </StoreContext.Provider>
+  <StoreContext.Provider value={{ ...storeValues, ...productsValues, ...cartValues }}>
+  {children}
+</StoreContext.Provider>
   );
+
 };

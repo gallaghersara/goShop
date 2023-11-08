@@ -6,28 +6,20 @@ import Cart from "./Cart/Cart";
 
 const Products2 = ({products}) => {
   const [cartOpen, setCartOpen] = useState(false);
-
+console.log("prod",products)
     // console.log(arr)
   return (
     <section className="products">
-      {products.map((event, index) => (
-        // <Product 
-        // category={event.category}
-        // // id={event.id}
-        // key={index}
-        // productID={event.productID}
-        // title={event.title}
-        // price={event.price}
-        // imageUrl={event.image}/>
-        <Cart
-          category={event.category}
-          // id={event.id}
-          key={index}
-          productID={event.productID}
-          title={event.title}
-          price={event.price}
-          imageUrl={event.image}
-        />
+      {products.map((item, index) => (
+
+        <Product 
+        category={item.category}
+        key={index}
+        productID={item._id}
+        title={item.title}
+        price={item.price}
+        imageUrl={item.image}
+       />
       ))}
 
     </section>
