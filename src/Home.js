@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Products2 from './components/Products2'
+import Products from './components/Products'
 import CartDrawer from './components/Cart/CartDrawer'
 import ProductInCart from './components/Cart/ProductInCart';
 import Nav from './components/Nav/Nav';
@@ -14,7 +14,7 @@ const Home = () => {
             </CartDrawer>
             {/* <ShoppingCartIcon onClick={() => setCartOpen(!cartOpen)} /> */}
             <Nav />
-        <Products2 />
+        <Products />
     </div>
   )
 }

@@ -1,44 +1,28 @@
-import React, { useEffect, useState } from "react";
-import "./Products.css"
-const Products = () => {
-  // const Products = ({ imageUrl, title, price, productID }) => {
-  const [products, setProducts] = useState([]);
+import React ,  { useState }  from "react";
+import "./Products.css";
+import Product from "./Product";
+import Cart from "./Cart/Cart";
+// import { arr } from "../../Data";
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+const Products = ({products}) => {
+  const [cartOpen, setCartOpen] = useState(false);
 
-  function getProducts() {
-    fetch("http://localhost:8000/items")
-      .then((response) => response.json())
-      .then((data) => {
-        // setAllProducts(data);
-        setProducts(data);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-    });
-  }
+    // console.log(arr)
   return (
-    <div className="products">
-  {  products.length>0 ?   products.map((item, index) => 
-  
-    <div className="product-card">
-        {/* <Products 
+    <section className="products">
+      {products.map((item, index) => (
+
+        <Product 
+        category={item.category}
+        key={index}
+        productID={item._id}
         title={item.title}
-        /> */}
-         <div className="product-image">
-        <img src={item.imageUrl} alt="productImg" />
-      </div>
-    <div className="product-info">
-        <h5>{item.title}</h5>
-        <h6>${item.price}</h6>
-    </div>
-    </div>
-     ):<h1>No Result Found</h1>
-  }
-    </div>
+        price={item.price}
+        imageUrl={item.image}
+       />
+      ))}
+
+    </section>
   );
 };
 

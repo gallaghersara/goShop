@@ -74,10 +74,6 @@ const SignUp = () => {
       <button className="appButton" type="button" onClick={handleSignUp}>
         Sign Up
       </button>
-      {/* <button className="appButton" onClick={handleSignUp} disabled={isLoading}>
-        {isLoading ? 'Signing Up...' : 'Sign Up'}
-      </button>
-      {error && <p>{error}</p>} */}
     </div>
   );
 };

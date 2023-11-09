@@ -14,18 +14,6 @@ const AddProduct = () => {
     }
     console.warn(title, price, description, category);
     
-    // const userString = localStorage.getItem("user");
-    // const user = userString ? JSON.parse(userString) : null;
-    
-    // // Check if "user" is a valid object and contains the "_id" property
-    // if (!user || !user._id) {
-    //   console.warn("User not logged in.");
-    //   return;
-    // }
-
-    // const userId = user._id;
-    // console.warn(userId);
-    
     const userId = JSON.parse(localStorage.getItem("user"))._id;
     console.warn(userId);
 

@@ -8,12 +8,6 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-//   useEffect(() => {
-//     const auth = localStorage.getItem("user");
-//     if (auth) {
-//       navigate("/");
-//     }
-//   }, []);
 
 const handleLogin = async (e) => {
     e.preventDefault();

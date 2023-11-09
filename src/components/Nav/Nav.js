@@ -8,7 +8,6 @@ import { useStore } from "../../StoreContext";
 const Nav = ({products, categories, onFilterChange, cartValues }) => {
   const navigate = useNavigate();
   const [cartOpen, setCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
   const { cart, setCart } = useStore();
   const auth = localStorage.getItem("user");
 
